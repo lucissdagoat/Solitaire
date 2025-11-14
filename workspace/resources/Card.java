@@ -64,19 +64,22 @@ public class Card extends JPanel{
 		 */
 		public static int valueInt(String value) {
 			
-			if(value.equals("J")) return 11;
-			if(value.equals("Q")) return 12;
-			if(value.equals("K")) return 13;
-			if(value.equals("A")) return 1;
+			if(value.equals("J")) return 10;
+			if(value.equals("Q")) return 10;
+			if(value.equals("K")) return 10;
+			if(value.equals("A")) return 0;
 			
 			return Integer.parseInt(value);
 		}
+		public int getValue() {
+			return value>10 ? 10 : value;
+		} 
 		/**
 		 * toString method, eg: "K of Diamonds"
 		 * @return {String} Description of the current card
 		 */
 		public String toString() {
-			return valueString(value) + " of " + suit.name().toLowerCase();
+			return valueString(value).toLowerCase() + " of " + suit.name().toLowerCase();
 		}
 		
 		/**
@@ -100,6 +103,7 @@ public class Card extends JPanel{
 			try {
 				// Load the image for the current file
 				URL url = getClass().getResource(this.toString() +".png");
+				System.out.println(this.toString());
 				image = ImageIO.read(url);
 				//System.out.println(url);
 				URL urlback = getClass().getResource("back.png"); 
